@@ -2,4 +2,5 @@
 
 .PHONY: fmt
 fmt:
-	prettier -w .
+	@prettier -w .
+	@nixfmt .

@@ -10,15 +10,10 @@
 
   outputs = { self, nixpkgs, flake-utils }:
     flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = nixpkgs.legacyPackages.${system};
+      let pkgs = nixpkgs.legacyPackages.${system};
       in {
         devShell = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            nixfmt
-            nodePackages.prettier
-          ];
+          buildInputs = with pkgs; [ nixfmt nodePackages.prettier ];
         };
-      }
-    );
+      });
 }
