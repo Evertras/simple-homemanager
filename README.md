@@ -14,7 +14,7 @@ Regardless, **this is the guide I wish I had when I started**. All I wanted was 
 
 ## Start the journey
 
-### Assumptions Housekeeping
+### Assumptions
 
 I assume you are running Linux of some sort. This may work on Mac too, but I haven't tried it.
 
