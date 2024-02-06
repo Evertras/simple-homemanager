@@ -1,5 +1,3 @@
-# flake.nix
-# Don't copy and paste this.  Read above first if you tried to cheat and skim.
 {
   description = "My Home Manager configuration";
 
