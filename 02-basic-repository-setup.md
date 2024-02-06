@@ -108,11 +108,31 @@ we can target different profiles in the future.
 
 ## Activate home-manager
 
+### Trip on a rake first
+
 ```bash
-# Runs the home-manager switch command we defined above
+# THIS WILL ERROR.  IT WILL MAKE NO SENES.  Read below.
+make
+```
+
+Assuming you aren't an overachiever, you should see an error about the files not being found.  But the files are there.  I know that.  You know that.  Why doesn't Nix know that?
+
+First explanation, because you will bite you: Nix with flakes will **completely
+ignore** anything that isn't added to the git repository.  This is actually a
+good thing, I promise.  Because everything must be in the git repository, you
+will be guaranteed that everything is reproducible.
+
+### Actually activate it
+
+```bash
+# Add everything to git
+git add flake.nix home.nix Makefile
+git commit -m "First home-manager commit"
+
+# This should work now
 make
 
-# Now we should be able to run hello
+# Now we should be able to run hello!
 hello
 ```
 
