@@ -1,8 +1,8 @@
-# Simple Homemanager with Flakes
+# Simple Home Manager with Flakes
 
 **Do not click around.  Read this guide in order.  Do all the steps.  You'll thank me later.**
 
-Want to control your entire Linux user space in a declarative, highly configurable, highly reproducible manner that you can take with you from machine to machine without ever worrying about how to rebuild it?  Read on.
+Want to control your entire Linux user space in a declarative, highly configurable, highly reproducible manner that you can take with you from machine to machine without ever worrying about how to rebuild it?  Did you try to do that with Nix's Home Manager and hated your life?  Read on.
 
 ## What is this?
 
