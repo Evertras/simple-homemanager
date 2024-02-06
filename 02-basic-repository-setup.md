@@ -1,5 +1,9 @@
 # Make a basic repository with a simple flake
 
+## What's a fla-
+
+Don't care, move on, find out later.
+
 ## Init a git repository
 
 You want to make a git repository for your Home Manager config. You want this
