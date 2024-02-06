@@ -7,6 +7,9 @@
 You probably want the multi-user installation, unless you really hate the idea
 of running anything as root.
 
+You may be tempted to start digging into random documentation here. Don't.
+Save that for another day.
+
 ### Enable Flakes
 
 You want to enable flakes. Why? Look into that later.
@@ -48,6 +51,10 @@ Make sure you follow step 4:
 # In the future we can get home-manager to do this for us, but bootstrapping for now...
 source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
 ```
+
+Do not read the rest of the docs. Do not try the getting started bits. Do not
+look for reason or explanation. Stay with me, you can go back once you have
+something working.
 
 ### Make sure it works
 
