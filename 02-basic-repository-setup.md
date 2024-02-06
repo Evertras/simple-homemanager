@@ -98,6 +98,7 @@ I hate writing out commands with flags in them. So let's make a Makefile do all
 that work for us before we even try running it.
 
 ```make
+# Careful about copy/pasting, Makefiles want tabs!
 .PHONY: update
 update:
     home-manager switch --flake .#myusername
@@ -111,7 +112,7 @@ we can target different profiles in the future.
 ### Trip on a rake first
 
 ```bash
-# THIS WILL ERROR.  IT WILL MAKE NO SENES.  Read below.
+# THIS WILL ERROR.  IT WILL MAKE NO SENSE.  Read below.
 make
 ```
 
@@ -119,7 +120,7 @@ Assuming you aren't an overachiever and did only what I asked you to do, you
 should see an error about the files not being found. But the files are there.
 I know that. You know that. Why doesn't Nix know that?
 
-First explanation, because you will bite you: Nix with flakes will **completely
+First explanation, because it will bite you: Nix with flakes will **completely
 ignore** anything that isn't added to the git repository. This is actually a
 good thing, I promise. Because everything must be in the git repository, you
 will be guaranteed that everything is reproducible. So to fix it, we just need
@@ -151,17 +152,34 @@ with flakes, and you hopefully did it a lot faster than I did.
 
 You can start adding more packages from
 [NixOS packages](https://search.nixos.org/packages) if you want. Try adding a
-few and run `make` again to get access to them in your shell.
+few and run `make` again to get access to them in your shell. To add a package,
+just add the name with some whitespace. Like so:
+
+```nix
+{ lib, pkgs, ... }:
+{
+  home.packages = with pkgs; [
+    hello
+    # Doesn't matter if they're on new lines or not
+    cowsay lolcat
+  ];
+}
+```
 
 You can also remove packages. Try removing `hello` from `home.nix` and notice
 that you can no longer run `hello` from your shell.
 
+You also just learned about Nix lists! Nix lists are just space-separated
+items. Any amount of whitespace is fine. They don't like commas.
+
 ## A cleanup step
 
 Before we're done, we really should add a cleanup task to our Makefile. This
-will make sure that Nix isn't eating your disk.
+will make sure that Nix isn't eating your disk over a long period of time with
+lots of changes.
 
 ```make
+# Careful about copy/pasting, Makefiles want tabs!
 .PHONY: update
 update:
     home-manager switch --flake .#myusername
@@ -191,9 +209,15 @@ You can now add packages to your user profile, and remove them.
 
 You can clean up after yourself with `make clean`.
 
-From here, the Nix world opens up and you can start doing all sorts of fun
-things by modifying your `home.nix`. In the future, we'll talk about how to
-find interesting/useful configuration options, how to organize your `home.nix`
-into separate module files with your own options, and more.
+## Next steps
 
-_TODO: Actually write that part if people want me to._
+From here, the Nix world opens up and you can start doing all sorts of fun
+things by modifying your `home.nix`.
+
+In the future, we'll talk about how to find interesting/useful configuration
+options to do things like
+[manage your bashrc](https://mynixos.com/home-manager/options/programs.bash),
+how to organize your `home.nix` into separate module files with your own
+configuration options, and more.
+
+_TODO: Actually write that part._
