@@ -11,6 +11,7 @@
 
   # This needs to be set to your actual username.
   username = "myusername";
+  homeDirectory = "/home/myusername";
 
   # Don't ever change this after the first build.
   # It tells home-manager what the original state schema

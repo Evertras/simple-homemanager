@@ -79,16 +79,22 @@ in the root of the repository.
 ```nix
 { lib, pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    hello
-  ];
+  home = {
+    packages = with pkgs; [
+      hello
+    ];
 
-  # This needs to actually be set to your username
-  username = "myusername";
+    # This needs to actually be set to your username
+    username = "myusername";
+    homeDirectory = "/home/myusername";
 
-  home.stateVersion = "23.11";
+    stateVersion = "23.11";
+  };
 }
 ```
+
+This time you actually do need to match your username to both `username` and
+to `homeDirectory`.
 
 ## Checkpoint
 
@@ -167,17 +173,20 @@ just add the name with some whitespace. Like so:
 ```nix
 { lib, pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    hello
-    # Doesn't matter if they're on new lines or not
-    cowsay lolcat
-  ];
+  home = {
+    packages = with pkgs; [
+      hello
+      # Doesn't matter if they're on new lines or not
+      cowsay lolcat
+    ];
 
-  # This needs to actually be set to your username
-  username = "myusername";
+    # This needs to actually be set to your username
+    username = "myusername";
+    homeDirectory = "/home/myusername";
 
-  # Don't ever change this after the first build.  Don't ask questions.
-  home.stateVersion = "23.11";
+    # Don't ever change this after the first build.  Don't ask questions.
+    stateVersion = "23.11";
+  };
 }
 ```
 
