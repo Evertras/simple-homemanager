@@ -221,8 +221,7 @@ remove older generations, for the record.
 ## Troubleshooting
 
 If anything is still broken, compare your files with
-[./02-basic-repository-setup.md](./02-basic-repository-setup.md) and make sure
-you didn't miss anything.
+[./02-basic/](./02-basic/) and make sure you didn't miss anything.
 
 ## Summary
 
