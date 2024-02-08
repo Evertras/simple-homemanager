@@ -83,6 +83,9 @@ in the root of the repository.
     hello
   ];
 
+  # This needs to actually be set to your username
+  username = "myusername";
+
   home.stateVersion = "23.11";
 }
 ```
@@ -169,6 +172,9 @@ just add the name with some whitespace. Like so:
     # Doesn't matter if they're on new lines or not
     cowsay lolcat
   ];
+
+  # This needs to actually be set to your username
+  username = "myusername";
 
   # Don't ever change this after the first build.  Don't ask questions.
   home.stateVersion = "23.11";

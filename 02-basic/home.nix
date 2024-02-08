@@ -9,6 +9,9 @@
     cowsay
   ];
 
+  # This needs to be set to your actual username.
+  username = "myusername";
+
   # Don't ever change this after the first build.
   # It tells home-manager what the original state schema
   # was, so it knows how to go to the next state.  It
