@@ -1,6 +1,6 @@
 .PHONY: switch
 switch:
-	home-manager switch --flake .#myusername
+	home-manager switch --flake .#myprofile
 
 .PHONY: clean
 clean:

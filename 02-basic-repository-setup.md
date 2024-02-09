@@ -56,7 +56,7 @@ neuroscience thing, just do it.
     in {
 
       homeConfigurations = {
-        myusername = {
+        myprofile = {
           home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
             modules = [ ./home.nix ];
@@ -67,14 +67,18 @@ neuroscience thing, just do it.
 ```
 
 When you were typing this (and **NOT** copy/pasting it, don't cheat), did you
-see `myusername`? Change that to your actual Linux username, your dog's name,
+see `myprofile`? Change that to your actual Linux username, your dog's name,
 or your favorite planet. Doesn't matter as long as it's alphanumeric
-(`[a-z0-9-]+`), just remember it for later.
+(`[a-z0-9-]+`), just remember it for later.  You can even leave it as
+`myprofile` for now if you really want to.
 
 ## Make a home.nix
 
 I bet you saw that `./home.nix` reference up there. Let's make that file, also
 in the root of the repository.
+
+Again, type it out.  Again, there will not be an explanation for any of this
+yet.  You're almost there, answers are coming.
 
 ```nix
 { lib, pkgs, ... }:
@@ -88,6 +92,8 @@ in the root of the repository.
     username = "myusername";
     homeDirectory = "/home/myusername";
 
+    # You do not need to change this if you're reading this in the future.
+    # Don't ever change this after the first build.  Don't ask questions.
     stateVersion = "23.11";
   };
 }
@@ -109,17 +115,17 @@ Home Manager is working for you.
 
 ## Make a Makefile
 
-I hate writing out commands with flags in them. So let's make a Makefile do all
-that work for us before we even try running it.
+I hate repeatedly writing out commands with flags in them. So let's make a
+Makefile do all that work for us before we even try running it.
 
 ```make
 # Careful about copy/pasting, Makefiles want tabs!
 .PHONY: update
 update:
-    home-manager switch --flake .#myusername
+    home-manager switch --flake .#myprofile
 ```
 
-Change `myusername` to whatever you changed it to in `flake.nix`. This is how
+Change `myprofile` to whatever you changed it to in `flake.nix`. This is how
 we can target different profiles in the future.
 
 ## Activate home-manager
@@ -155,6 +161,13 @@ make
 
 # Now we should be able to run hello!
 hello
+
+# And we can see a nix store path as its source
+which hello
+
+# There's also a flake.lock file now... what is it?  Find out later.
+git add flake.lock
+git commit -m "Add flake.lock"
 ```
 
 If `hello` isn't found, make sure you followed the install steps correctly. In
@@ -176,7 +189,8 @@ just add the name with some whitespace. Like so:
   home = {
     packages = with pkgs; [
       hello
-      # Doesn't matter if they're on new lines or not
+      # Doesn't matter if they're on new lines or not,
+      # they just need whitespace between them
       cowsay lolcat
     ];
 
@@ -191,7 +205,7 @@ just add the name with some whitespace. Like so:
 ```
 
 You can also remove packages. Try removing `hello` from `home.nix` and notice
-that you can no longer run `hello` from your shell.
+that you can no longer run `hello` from your shell after applying.
 
 You also just learned about Nix lists! Nix lists are just space-separated
 items. Any amount of whitespace is fine. They don't like commas.
