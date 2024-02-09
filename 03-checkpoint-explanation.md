@@ -23,9 +23,10 @@ generally accepted as "the way" now.
 
 The output of a flake can be a number of things.  In our particular case, we're
 defining an output that's being used by `home-manager` to define our user space
-environment.  In other cases we can define things like packaes, entire system
-conigurations of NixOS, or even just a single function or library of functions.
-For now, we just care that we're creating a home-manager configuration.
+environment.  In other cases we can define things like packages, entire system
+configurations of NixOS, or even just a single function or library of functions.
+For now, we just care that we're creating a home-manager configuration.  In the
+future, specific commands may look for different output fields.
 
 When you build or use a flake, it will try and reference the `flake.lock` file.
 If it doesn't exist, it will generate the lock file by getting the latest
