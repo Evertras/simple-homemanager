@@ -27,7 +27,7 @@ I know you already want answers. I wanted answers. I was frustrated, trying to
 dig into _why_ I was doing these things when I saw them before moving on. That
 was a mistake. Trust me, just push through and get something working first.
 Then you can get answers, because you can play with it. The rabbit holes are
-too deep for now.
+too deep for now.  The answers are coming in the next section!
 
 That being said, type this out yourself. Don't copy/paste it. It will be
 annoying. But doing things the long way will help you remember them. It's a
@@ -257,4 +257,4 @@ options to do things like
 how to organize your `home.nix` into separate module files with your own
 configuration options, and more.
 
-_TODO: Actually write that part._
+But for now, [I owe you some explanations in the next section.](./03-checkpoint-explanation.md).
