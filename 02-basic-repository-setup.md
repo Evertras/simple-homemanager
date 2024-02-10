@@ -1,5 +1,7 @@
 # 02 - Make a basic repository with a simple flake
 
+[<- 01-install](./01-install.md) | [03 - Checkpoint Explanation ->](./03-checkpoint-explanation.md)
+
 ## What's a fla-
 
 Don't care, move on, find out later.

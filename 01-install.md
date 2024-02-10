@@ -1,5 +1,7 @@
 # 01 - Install Nix and Home Manager
 
+[<- README.md](README.md) | [02 - Basic repository setup ->](02-basic-repository-setup.md)
+
 ## Install Nix
 
 [Install Nix](https://nixos.org/download.html).
