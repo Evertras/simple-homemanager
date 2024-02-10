@@ -11,7 +11,7 @@ Again, you should now understand:
 - How the `.` notation works
 - That the `inputs` field is a Nix attribute set with arbitrary fields
 
-[Go back if you don't.](./03-checkpoint-explanation.md
+[Go back if you don't.](./03-checkpoint-explanation.md)
 
 Now let's tackle the scarier `outputs` field. We'll need to learn some more
 Nix syntax, so we'll jump back and forth between new syntax and how it applies
@@ -104,8 +104,8 @@ double (double 3)
 ```
 
 Remember that a Nix file can only ever be a single expression. This means that
-you're not going to define functions in a file to call later. So where do they
-come from? We'll see as we go. The important things to know:
+you're not going to define functions in a global scope to call later. So where
+do they come from? We'll see as we go. The important things to know:
 
 - Functions always have exactly one argument
 - Functions can take an attribute set as an argument
