@@ -1,6 +1,6 @@
 # 03 - Checkpoint Part 1: The flake.nix file
 
-[<- 02 - Basic Repository Setup](./02-basic-repository-setup.md) | [04 - Checkpoint Part 2: The flake.nix file ->](./04-checkpoint-part-2-the-flake.nix-file.md)
+[<- 02 - Basic Repository Setup](./02-basic-repository-setup.md) | [04 - Checkpoint Part 2: The flake.nix file ->](./04-checkpoint-part-2.md)
 
 As a reward for sticking with me and getting your first home manager flake set
 up, let's actually go back and explain everything now! It's important to have
