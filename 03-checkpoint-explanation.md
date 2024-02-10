@@ -99,7 +99,7 @@ Where is this used? You can run `nix flake info` to see it, but honestly
 it's optional. I'm just including it here because it's a convenient way to
 show a simple string value assignment! In fact, if you look at the root
 [flake.nix](./flake.nix) file, you'll see that there's no description field
-defined at all.  It's more useful in a shareable package, so for your home
+defined at all. It's more useful in a shareable package, so for your home
 manager setup you can omit it if you want.
 
 ### The inputs

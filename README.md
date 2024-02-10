@@ -36,7 +36,7 @@ install. After Home Manager is installed, it should all be the same anyway.
 
 I do not assume you have any experience with Nix.
 
-I assume you have minimal programming knowledge.  If you know what a "string"
+I assume you have minimal programming knowledge. If you know what a "string"
 and an "array" are, you're probably fine.
 
 ### Please read this bit
