@@ -20,12 +20,12 @@ to revisit as you become more familiar with Nix things.
 The term "flake" plays off Nix's logo of a snowflake. There's no deeper
 meaning than that. I wondered about that for a while until someone told me.
 
-Basically, a "flake" is a way to define something in Nix that is completely
-self-contained. All the inputs are defined explicitly in the `inputs` field,
-and these are locked to a specific git commit or hash of some sort. In regular
-Nix, you have to declare all these hashes yourself, which is painful. Flakes
-are marked as "experimental" still, but really are quite widespread and
-generally accepted as "the way" now.
+Basically, a ["flake"](https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-flake.html)
+is a way to define something in Nix that is completely self-contained. All the
+inputs are defined explicitly in the `inputs` field, and these are locked to a
+specific git commit or hash of some sort. In regular Nix, you have to declare
+all these hashes yourself, which is painful. Flakes are marked as "experimental"
+still, but really are quite widespread and generally accepted as "the way" now.
 
 The output of a flake can be a number of things. In our particular case, we're
 defining an output that's being used by `home-manager` to define our user space
