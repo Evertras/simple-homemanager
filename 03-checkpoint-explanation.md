@@ -35,7 +35,7 @@ If it doesn't exist, it will generate the lock file by getting the latest
 versions of the defined inputs. If inputs are added, they will be saved
 automatically to the `flake.lock` file. If inputs are removed, they will be
 automatically removed from `flake.lock`. They are never automatically updated,
-to preserve reproducibility, but can be explicitly updated with a Nix command.
+to preserve reproducibility, but can be explicitly [updated with a Nix command.](https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-flake-update.html)
 
 ## Anatomy of a flake
 
