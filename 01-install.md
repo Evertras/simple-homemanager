@@ -1,4 +1,4 @@
-# Install Nix and Home Manager
+# 01 - Install Nix and Home Manager
 
 ## Install Nix
 

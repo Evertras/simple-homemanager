@@ -1,4 +1,4 @@
-# Make a basic repository with a simple flake
+# 02 - Make a basic repository with a simple flake
 
 ## What's a fla-
 
