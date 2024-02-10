@@ -12,7 +12,7 @@ your belt. Hopefully just seeing how much there is to explain in these small
 files will reassure you to take it slow.
 
 I will add links to relevant documentation or other information. They can be
-good to look at, but be careful not to get lost in them. Save them for later
+good to look at, but **be careful not to get lost in them**. Save them for later
 to revisit as you become more familiar with Nix things.
 
 ## What is a flake?
