@@ -83,9 +83,9 @@ some configuration we're interested in.
 ```
 
 Here's a field called `description` that holds a string literal. As simple as
-it gets. Notice that it must end in a semicolon. All statements in Nix must
-end in a semicolon, _except_ for the overall expression defined in the file.
-This means that whitespace doesn't really matter.
+it gets. Notice that it must end in a semicolon. All assignments in an
+attribute set in Nix must end in a semicolon. This means that whitespace doesn't
+really matter.
 
 ```nix
 {
