@@ -65,10 +65,10 @@ There can only ever be one argument in a Nix function. This allows a lot of
 really cool stuff like currying. We'll leave that for another day, so for now
 just know that a function always has exactly one argument.
 
-Functions can also take an attribute set as an argument. The Nix syntax allows
-us to _deconstruct_ the incoming attribute set into specific fields that we
-expect. When we do this, the input fields _must_ be provided (unless we do some
-other fancy default syntax, which is for another day).
+Functions can (and often do) take an attribute set as an argument. The Nix
+syntax allows us to _deconstruct_ the incoming attribute set into specific
+fields that we expect. When we do this, the input fields _must_ be provided
+(unless we do some other fancy default syntax, which is for another day).
 
 ```nix
 # A function that takes an attribute set with fields `a` and `b` and returns
@@ -79,30 +79,16 @@ other fancy default syntax, which is for another day).
 Any call of this function must provide exactly `a` and `b` in the attribute set.
 It cannot provide anything else.
 
-To call a function:
-
-```nix
-# Suppose we have access to a function called `double`.  We write the name
-# of the function and follow it with the argument.
-double 3
-```
-
-And if you want to call multiple, break out the parenthesis:
-
-```nix
-# Evaluates the inner 'double' first, then the outer 'double' with the result
-# of the first 'double'.
-double (double 3)
-```
-
 Remember that a Nix file can only ever be a single expression. This means that
 you're not going to define functions in a global scope to call later. So where
-do they come from? We'll see as we go. The important things to know:
+do they come from? How do we call them? We'll see as we go, this is already
+tons of information for you to worry about!
+
+The important things to know right now:
 
 - Functions always have exactly one argument
 - Functions can take an attribute set as an argument
 - Functions always evaluate to a single expression
-- Functions are evaluated 'lazily', never evaluated until they are called
 
 ## The `outputs` function
 
