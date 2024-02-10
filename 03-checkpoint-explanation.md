@@ -1,38 +1,38 @@
 # 03 - Checkpoint Part 1: The flake.nix file
 
 As a reward for sticking with me and getting your first home manager flake set
-up, let's actually go back and explain everything now!  It's important to have
+up, let's actually go back and explain everything now! It's important to have
 a working example for context.
 
-I'm going to try and give high level explanations.  The rabbit holes are still
+I'm going to try and give high level explanations. The rabbit holes are still
 deep, so be careful how much you try to delve from here until you get more under
-your belt.  Hopefully just seeing how much there is to explain in these small
+your belt. Hopefully just seeing how much there is to explain in these small
 files will reassure you to take it slow.
 
 ## What is a flake?
 
-The term "flake" plays off Nix's logo of a snowflake.  There's no deeper
-meaning than that.  I wondered about that for a while until someone told me.
+The term "flake" plays off Nix's logo of a snowflake. There's no deeper
+meaning than that. I wondered about that for a while until someone told me.
 
 Basically, a "flake" is a way to define something in Nix that is completely
-self-contained.  All the inputs are defined explicitly in the `inputs` field,
-and these are locked to a specific git commit or hash of some sort.  In regular
-Nix, you have to declare all these hashes yourself, which is painful.  Flakes
+self-contained. All the inputs are defined explicitly in the `inputs` field,
+and these are locked to a specific git commit or hash of some sort. In regular
+Nix, you have to declare all these hashes yourself, which is painful. Flakes
 are marked as "experimental" still, but really are quite widespread and
 generally accepted as "the way" now.
 
-The output of a flake can be a number of things.  In our particular case, we're
+The output of a flake can be a number of things. In our particular case, we're
 defining an output that's being used by `home-manager` to define our user space
-environment.  In other cases we can define things like packages, entire system
+environment. In other cases we can define things like packages, entire system
 configurations of NixOS, or even just a single function or library of functions.
-For now, we just care that we're creating a home-manager configuration.  In the
+For now, we just care that we're creating a home-manager configuration. In the
 future, specific commands may look for different output fields.
 
 When you build or use a flake, it will try and reference the `flake.lock` file.
 If it doesn't exist, it will generate the lock file by getting the latest
-versions of the defined inputs.  If inputs are added, they will be saved
-automatically to the `flake.lock` file.  If inputs are removed, they will be
-automatically removed from `flake.lock`.  They are never automatically updated,
+versions of the defined inputs. If inputs are added, they will be saved
+automatically to the `flake.lock` file. If inputs are removed, they will be
+automatically removed from `flake.lock`. They are never automatically updated,
 to preserve reproducibility, but can be explicitly updated with a Nix command.
 
 ## Anatomy of a flake
@@ -41,7 +41,7 @@ Let's look at the flake we made, one section at a time.
 
 ### The curly brackets
 
-Yes, the curly brackets.  We're starting there.
+Yes, the curly brackets. We're starting there.
 
 ```nix
 {
@@ -49,24 +49,24 @@ Yes, the curly brackets.  We're starting there.
 }
 ```
 
-In Nix, every `*.nix` file is a single *Nix expression*.  In this case, we're
-defining a [*Nix attribute set*](https://nixos.org/manual/nix/stable/language/values.html#attribute-set).
-A Nix attribute set is basically a dictionary object, like a JSON blob.  It
+In Nix, every `*.nix` file is a single _Nix expression_. In this case, we're
+defining a [_Nix attribute set_](https://nixos.org/manual/nix/stable/language/values.html#attribute-set).
+A Nix attribute set is basically a dictionary object, like a JSON blob. It
 contains some number of fields, which hold some number of expression values.
 
-An attribute set is defined by curly brackets.  The fields can be any
-alphanumeric value and may include dashes and undescores.  They often hold
+An attribute set is defined by curly brackets. The fields can be any
+alphanumeric value and may include dashes and undescores. They often hold
 attribute sets of their own, nesting deeply for specific configurations.
 
 ### Top level fields in a flake
 
-There are a few top level fields of a flake that we need to worry about.  They
-are specifically `description`, `inputs`, and `outputs`.  There's technically
+There are a few top level fields of a flake that we need to worry about. They
+are specifically `description`, `inputs`, and `outputs`. There's technically
 also `nixConfig`, but don't worry about that.
 
-`description` is a string that describes the flake.  Technically optional.
+`description` is a string that describes the flake. Technically optional.
 
-`inputs` is a set of inputs that the flake uses.  A flake only ever sees what's
+`inputs` is a set of inputs that the flake uses. A flake only ever sees what's
 in `inputs` and what's been explicitly added in the local git repository.
 
 `outputs` is a function that takes all of the defined `inputs` and produces
@@ -80,9 +80,9 @@ some configuration we're interested in.
 }
 ```
 
-Here's a field called `description` that holds a string literal.  As simple as
-it gets.  Notice that it must end in a semicolon.  All statements in Nix must
-end in a semicolon, *except* for the overall expression defined in the file.
+Here's a field called `description` that holds a string literal. As simple as
+it gets. Notice that it must end in a semicolon. All statements in Nix must
+end in a semicolon, _except_ for the overall expression defined in the file.
 This means that whitespace doesn't really matter.
 
 ```nix
@@ -93,8 +93,8 @@ This means that whitespace doesn't really matter.
 }
 ```
 
-Where is this used?  You can run `nix flake info` to see it, but honestly
-it's optional.  I'm just including it here because it's a convenient way to
+Where is this used? You can run `nix flake info` to see it, but honestly
+it's optional. I'm just including it here because it's a convenient way to
 show a simple string value assignment!
 In fact, if you look at the root [flake.nix](./flake.nix) file, you'll see that
 there's no description field defined at all.
@@ -135,11 +135,11 @@ But hold on, what's this `nixpkgs.url` thing?
 
 Using the `.` is just a shortcut for a nested field in a deeper attribute set.
 So you can recognize now that each value in `inputs` is itself a new attribute
-set that usually contains a `url` at minimum.  This `url` field is often a
+set that usually contains a `url` at minimum. This `url` field is often a
 github link, but it can be set to other things as well.
 
 Note that if you use this `.` shortcut, you can use it multiple times or at any
-point in the nesting.  It will all combine as you'd expect:
+point in the nesting. It will all combine as you'd expect:
 
 ```nix
 {
@@ -159,12 +159,12 @@ point in the nesting.  It will all combine as you'd expect:
 }
 ```
 
-The actual names of `nixpkgs` and `home-manager` are arbitrary.  They could be
+The actual names of `nixpkgs` and `home-manager` are arbitrary. They could be
 whatever you want them to be, but it's common to use these names so best to
 stick with tradition.
 
 Looking at the `home-manager` input, you can see that it has a field called
-`inputs.nixpkgs.follows`.  This is a way to say that the `home-manager` input
+`inputs.nixpkgs.follows`. This is a way to say that the `home-manager` input
 depends on the `nixpkgs` input.
 
 For a reference on what other things can be in the `inputs` field, see the
@@ -175,15 +175,15 @@ Github repositories we're locking to, then you're fine to move on.
 
 #### `nixpkgs`
 
-`nixpkgs` is a bit special.  It's a reference to the [Nixpkgs repository](https://github.com/NixOS/nixpkgs),
-which contains over 80,000 packages.  It's so special it gets its own import
-without needing any github information.  The `23.11` part is a git tag.  You can
+`nixpkgs` is a bit special. It's a reference to the [Nixpkgs repository](https://github.com/NixOS/nixpkgs),
+which contains over 80,000 packages. It's so special it gets its own import
+without needing any github information. The `23.11` part is a git tag. You can
 [see it here](https://github.com/NixOS/nixpkgs/releases/tag/23.11) if you're
-curious.  There's nothing special about it otherwise, it's just a tag to freeze
-all the packages at a specific version.  You can use other tags, or even go
+curious. There's nothing special about it otherwise, it's just a tag to freeze
+all the packages at a specific version. You can use other tags, or even go
 `unstable` if you want to get the latest.
 
-It's not just packages, though!  It contains an [extensive standard library](https://nixos.org/manual/nixpkgs/stable/#sec-functions-library)
+It's not just packages, though! It contains an [extensive standard library](https://nixos.org/manual/nixpkgs/stable/#sec-functions-library)
 of sorts for Nix, located in `nixpkgs/lib`.
 
 Basically, `nixpkgs` is probably the absolute most important input you'll ever
@@ -191,7 +191,7 @@ include, and you'll probably include it in every single flake you ever make.
 
 ## Summary so far
 
-Ok, that's already a lot and we haven't even gotten past `inputs`!  Let's take
+Ok, that's already a lot and we haven't even gotten past `inputs`! Let's take
 a break and make sure we understand what's going on so far, because the
 `outputs` section is going to be even more complicated.
 

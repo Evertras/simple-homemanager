@@ -27,7 +27,7 @@ I know you already want answers. I wanted answers. I was frustrated, trying to
 dig into _why_ I was doing these things when I saw them before moving on. That
 was a mistake. Trust me, just push through and get something working first.
 Then you can get answers, because you can play with it. The rabbit holes are
-too deep for now.  The answers are coming in the next section!
+too deep for now. The answers are coming in the next section!
 
 That being said, type this out yourself. Don't copy/paste it. It will be
 annoying. But doing things the long way will help you remember them. It's a
@@ -69,7 +69,7 @@ neuroscience thing, just do it.
 When you were typing this (and **NOT** copy/pasting it, don't cheat), did you
 see `myprofile`? Change that to your actual Linux username, your dog's name,
 or your favorite planet. Doesn't matter as long as it's alphanumeric
-(`[a-z0-9-]+`), just remember it for later.  You can even leave it as
+(`[a-z0-9-]+`), just remember it for later. You can even leave it as
 `myprofile` for now if you really want to.
 
 ## Make a home.nix
@@ -77,8 +77,8 @@ or your favorite planet. Doesn't matter as long as it's alphanumeric
 I bet you saw that `./home.nix` reference up there. Let's make that file, also
 in the root of the repository.
 
-Again, type it out.  Again, there will not be an explanation for any of this
-yet.  You're almost there, answers are coming.
+Again, type it out. Again, there will not be an explanation for any of this
+yet. You're almost there, answers are coming.
 
 ```nix
 { lib, pkgs, ... }:
