@@ -257,4 +257,4 @@ options to do things like
 how to organize your `home.nix` into separate module files with your own
 configuration options, and more.
 
-But for now, [I owe you some explanations in the next section.](./03-checkpoint-explanation.md).
+But for now, [I owe you some explanations in the next section.](./03-checkpoint-explanation.md)
