@@ -17,7 +17,7 @@ Now let's tackle the scarier `outputs` field. We'll need to learn some more
 Nix syntax, so we'll jump back and forth between new syntax and how it applies
 to the `outputs` field.
 
-This is going to be long, but if this doesn't convince you that you were right
+This is going to be long. If this doesn't convince you that you were right
 to not dive into the rabbit holes of Nix docs on your own, nothing will.
 
 ## Outputs
@@ -62,16 +62,8 @@ a: a + 2
 There's a single argument `a`. The result is `a + 2`. Simple!
 
 There can only ever be one argument in a Nix function. This allows a lot of
-really cool stuff like currying. At the risk of diving too deep...
-
-```nix
-# A function that takes an argument `a` and returns a new function that takes
-# an argument `b` and returns `a + b`.
-a: b: a + b
-```
-
-If that made no sense, don't worry about it and figure it out later. For now,
-let's focus on what this can do for us in `outputs`.
+really cool stuff like currying. We'll leave that for another day, so for now
+just know that a function always has exactly one argument.
 
 Functions can also take an attribute set as an argument. The Nix syntax allows
 us to _deconstruct_ the incoming attribute set into specific fields that we
