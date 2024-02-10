@@ -1,4 +1,4 @@
-# 04 - Checkpoint Part 4: The flake.nix file outputs
+# 04 - Checkpoint Part 2: The flake.nix file outputs
 
 [<- Checkpoint part 1](./03-checkpoint-explanation.md)
 
