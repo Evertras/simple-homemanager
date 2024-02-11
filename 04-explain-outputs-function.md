@@ -1,4 +1,4 @@
-# 04 - Explanation: Flake.nix outputs
+# 04 - Explanation: Flake.nix output function syntax
 
 [<- Explanation: Basic Nix syntax and flake.nix inputs](./03-explain-inputs.md)
 
@@ -15,7 +15,9 @@ Again, you should now understand:
 
 Now let's tackle the scarier `outputs` field. We'll need to learn some more
 Nix syntax, so we'll jump back and forth between new syntax and how it applies
-to the `outputs` field.
+to the `outputs` field.  We'll leave the inner `homeConfigurations` field for
+the next section, and only focus on the outer bits because there's a lot
+happening in just these few lines.
 
 This is going to be long. If this doesn't convince you that you were right
 to not dive into the rabbit holes of Nix docs on your own, nothing will.
@@ -306,7 +308,7 @@ that's for another day. Just get used to the basics of `inherit` for now
 and get in the habit of using it any time you would use `x = x` in an
 attribute set if you want to fit in with the Nix cool kids.
 
-### Bringing it all together for our `let in`
+## Summary so far
 
 Ok, so that was a lot! Let's bring it all together. We're still just looking
 at the `let in` block.

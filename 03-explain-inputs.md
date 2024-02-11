@@ -1,6 +1,6 @@
 # 03 - Explanation: Basic Nix syntax and flake.nix inputs
 
-[<- 02 - Basic Repository Setup](./02-basic-repository-setup.md) | [04 - Explanation: The flake.nix outputs ->](./04-explain-outputs.md)
+[<- 02 - Basic Repository Setup](./02-basic-repository-setup.md) | [04 - Explanation: The flake.nix output function ->](./04-explain-outputs-function.md)
 
 As a reward for sticking with me and getting your first home manager flake set
 up, let's actually go back and explain everything now! It's important to have
@@ -221,3 +221,5 @@ and reread.
   - A Nix attribute set is some key/values in curly brackets
   - String literals in Nix
   - `thing.another.stuff = "value";` as a shortcut
+
+If you're feeling good, let's move on to [the outputs section](./04-explain-outputs-function.md).
