@@ -201,7 +201,7 @@ Ok. Let's take these one at a time.
 lib = nixpkgs.lib;
 ```
 
-Remember how above I told you that `nixpkgs` also contains a giant standard
+Remember how before I told you that `nixpkgs` also contains a giant standard
 library of sorts for Nix? [This is that standard library.](https://nixos.org/manual/nixpkgs/stable/#id-1.4)
 You may want to bookmark that, but for now just take a glance and be convinced
 that there's a lot of stuff there. If you really want to dig deeper, you can
