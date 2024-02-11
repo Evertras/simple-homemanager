@@ -56,13 +56,11 @@ neuroscience thing, just do it.
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
     in {
-
       homeConfigurations = {
-        myprofile = {
-          home-manager.lib.homeManagerConfiguration {
-            inherit pkgs;
-            modules = [ ./home.nix ];
-          }
+        myprofile = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ ./home.nix ];
+        };
       };
     };
 }
