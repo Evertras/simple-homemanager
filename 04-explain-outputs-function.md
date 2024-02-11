@@ -224,8 +224,8 @@ to the appropriate value after finding it yourself.
 
 This `system` variable isn't magical, though. Nothing in this `let` has a
 magical name of any sort, it's all arbitrary. We could have set
-`steve = "x86_64-linux;"` if we wanted to. So how do we use it? The next line
-answers that.
+`steve = "x86_64-linux;"` if we wanted to (with a minor change later).
+So how do we use it? The next line answers that.
 
 ```nix
 pkgs = import nixpkgs { inherit system; };
@@ -308,6 +308,11 @@ You can also do some neat tricks with `inherit` to grab nested fields, but
 that's for another day. Just get used to the basics of `inherit` for now
 and get in the habit of using it any time you would use `x = x` in an
 attribute set if you want to fit in with the Nix cool kids.
+
+Note that if you had actually renamed the `system = "x86_64-linux";` line to
+`steve = "x86_64-linux";`, you'd need to change `inherit system` to
+`system = steve`.  We specifically chose the name `system` in the `let` block
+so that we could use `inherit` and make it clearer.
 
 ## Summary so far
 
