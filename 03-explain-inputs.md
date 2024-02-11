@@ -196,7 +196,7 @@ specific git commit SHA, or even go `unstable` if you want to get the latest
 the first apply!)
 
 It's not just packages, though! It contains an [extensive standard library](https://nixos.org/manual/nixpkgs/stable/#sec-functions-library)
-of sorts for Nix, located in `nixpkgs/lib`.  If you really want a rabbit hole,
+of sorts for Nix, located in `nixpkgs/lib`. If you really want a rabbit hole,
 [check the source here](https://github.com/NixOS/nixpkgs/tree/master/lib).
 
 Basically, `nixpkgs` is probably the absolute most important input you'll ever

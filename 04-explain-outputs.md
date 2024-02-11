@@ -20,6 +20,10 @@ to the `outputs` field.
 This is going to be long. If this doesn't convince you that you were right
 to not dive into the rabbit holes of Nix docs on your own, nothing will.
 
+_If you don't understand this section the first time, that's fine. Come back
+to it later for reference as you tinker more. The important takeaway for you
+here is that these things exist as concepts to refer to later._
+
 ## Outputs
 
 A quick refresher, here's our current `outputs` in its entirety.
@@ -46,17 +50,21 @@ Hope you're ready for some fun, because there's a lot to unpack here.
 
 ## Nix functions
 
-_If you don't understand this section the first time, that's fine. Come back
-to it later for reference._
-
 Nix would be terribly boring if it was just a glorified JSON format, which is
 all we've seen so far. But Nix is a full functional language, so let's see what
 a function in Nix looks like. Note that this isn't named or usable anywhere
-yet, we'll get to how to actually define practical usable functions later. Just
-focus on the syntax for now, because you'll see it nested everywhere.
+yet. We'll get to how to actually define practical usable functions later. Just
+focus on the syntax for now, because you'll see it nested everywhere inside
+things.
 
 ```nix
-a: a + 2
+# argument
+# |
+# v
+  a: a + 2
+#    ^^^^^
+#     |
+#     result
 ```
 
 There's a single argument `a`. The result is `a + 2`. Simple!
@@ -73,7 +81,14 @@ fields that we expect. When we do this, the input fields _must_ be provided
 ```nix
 # A function that takes an attribute set with fields `a` and `b` and returns
 # `a + b`.
-{ a, b }: a + b
+
+# argument (still single!)
+#    |
+# vvvvvvvv
+  { a, b }: a + b
+#           ^^^^^
+#             |
+#           result
 ```
 
 Any call of this function must provide exactly `a` and `b` in the attribute set.
@@ -96,6 +111,9 @@ Ok, let's finally get back to our `outputs` field. Specifically, the first
 line.
 
 ```nix
+#           argument
+#              |
+#         vvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 outputs = { nixpkgs, home-manager, ... }:
 ```
 
