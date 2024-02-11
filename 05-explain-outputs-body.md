@@ -121,7 +121,8 @@ This is a syntax used often with flakes where you specify a path to the flake,
 followed by some `#selector`.  In our case, that `.` means the current path.
 The `#myprofile` means to select the profile named `myprofile` from the list of
 `homeConfigurations`.  If we wanted to have multiple profiles, we could add them
-to our `outputs` and select them with `#` in the same way.
+to our `homeConfigurations` attribute set and select them with `#` in the same
+way.
 
 ### The value of `myprofile`
 
