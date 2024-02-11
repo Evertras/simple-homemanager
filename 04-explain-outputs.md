@@ -222,7 +222,7 @@ to the appropriate value after finding it yourself.
 
 This `system` variable isn't magical, though. Nothing in this `let` has a
 magical name of any sort, it's all arbitrary. We could have set
-`steve = "x86_64-linux;" if we wanted to. So how do we use it? The next line
+`steve = "x86_64-linux;"` if we wanted to. So how do we use it? The next line
 answers that.
 
 ```nix
