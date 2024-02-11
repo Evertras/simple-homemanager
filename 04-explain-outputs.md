@@ -20,10 +20,6 @@ to the `outputs` field.
 This is going to be long. If this doesn't convince you that you were right
 to not dive into the rabbit holes of Nix docs on your own, nothing will.
 
-_If you don't understand this section the first time, that's fine. Come back
-to it later for reference as you tinker more. The important takeaway for you
-here is that these things exist as concepts to refer to later._
-
 ## Outputs
 
 A quick refresher, here's our current `outputs` in its entirety.

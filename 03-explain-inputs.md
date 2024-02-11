@@ -15,6 +15,10 @@ I will add links to relevant documentation or other information. They can be
 good to look at, but **be careful not to get lost in them**. Save them for later
 to revisit as you become more familiar with Nix things.
 
+_If you don't understand these sections the first time, that's fine. Come back
+to it later for reference as you tinker more. The important takeaway for you
+here is that these things exist as concepts to refer to later._
+
 ## What is a flake?
 
 The term "flake" plays off Nix's logo of a snowflake. There's no deeper
