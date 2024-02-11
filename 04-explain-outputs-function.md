@@ -311,7 +311,7 @@ attribute set if you want to fit in with the Nix cool kids.
 
 Note that if you had actually renamed the `system = "x86_64-linux";` line to
 `steve = "x86_64-linux";`, you'd need to change `inherit system` to
-`system = steve`.  We specifically chose the name `system` in the `let` block
+`system = steve`. We specifically chose the name `system` in the `let` block
 so that we could use `inherit` and make it clearer.
 
 ## Summary so far
