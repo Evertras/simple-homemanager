@@ -61,8 +61,9 @@ A Nix attribute set is basically a dictionary object, like a JSON blob. It
 contains some number of fields, which hold some number of expression values.
 
 An attribute set is defined by curly brackets. The fields can be any
-alphanumeric value and may include dashes and undescores. They often hold
-attribute sets of their own, nesting deeply for specific configurations.
+alphanumeric value and may include dashes, undescores, or apostrophes. They
+often hold attribute sets of their own, nesting deeply for specific
+configurations.
 
 You will see these absolutely everywhere. They are the bread and butter of Nix.
 
@@ -195,7 +196,8 @@ specific git commit SHA, or even go `unstable` if you want to get the latest
 the first apply!)
 
 It's not just packages, though! It contains an [extensive standard library](https://nixos.org/manual/nixpkgs/stable/#sec-functions-library)
-of sorts for Nix, located in `nixpkgs/lib`.
+of sorts for Nix, located in `nixpkgs/lib`.  If you really want a rabbit hole,
+[check the source here](https://github.com/NixOS/nixpkgs/tree/master/lib).
 
 Basically, `nixpkgs` is probably the absolute most important input you'll ever
 include, and you'll probably include it in every single flake you ever make.
