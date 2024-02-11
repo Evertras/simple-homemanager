@@ -245,6 +245,17 @@ on. [This explains why we can use it on a flake.](https://stackoverflow.com/ques
 The short version is smile, nod, and understand that `import nixpkgs` evaluates
 to a function that we can call.
 
+Specifically, `import nixpkgs` happens before the rest of the line. Given your
+knowledge of `let in`, this should make sense to you:
+
+```nix
+let
+  # Same as what we're already doing, just with an extra step
+  makePkgs = import nixpkgs;
+  pkgs = makePkgs { inherit system; };
+in #...
+```
+
 #### Using `import` vs `legacyPackages`
 
 As an aside, you may see some examples out there with some field of
@@ -262,7 +273,8 @@ remember from above that a function call takes a single argument. In this case
 the argument is an attribute set, and it requires `system`.
 
 How are you supposed to know this? You read it somewhere and copy/paste like
-the rest of us. _Welcome to Nix!_
+the rest of us. _Welcome to Nix!_ I actually still can't find that info in
+the official docs. If you know where it is, open an issue here.
 
 Ok, so we want to give it an attribute set, and we want to give it the field
 `system`. So what's this `inherit system` about? Basically, `inherit a;` is
@@ -271,7 +283,7 @@ exactly the same as `a = a;`.
 ```nix
 let
   a = 3;
-  # The following declarations are exactly the same
+  # The following declarations are exactly the same (b == c)
   b = { inherit a; };
   c = { a = a };
 in
@@ -284,22 +296,47 @@ more useful when you have multiple fields to inherit, like so:
 
 ```nix
 let
-  a = 3;
-  b = 4;
+  someReallyImportantNumber = 3;
+  anotherReallyImportantNumber = 4;
   # The following declarations are exactly the same
-  c = { inherit a b; };
-  d = { a = a; b = b; };
+  a = { inherit someReallyImportantNumber anotherReallyImportantNumber; };
+  b = { someReallyImportantNumber = someReallyImportantNumber; anotherReallyImportantNumber = anotherReallyImportantNumber; };
 in
   # ...
 ```
 
 You can also do some neat tricks with `inherit` to grab nested fields, but
-that's for another day. Just get used to the basics of `inherit` for now.
+that's for another day. Just get used to the basics of `inherit` for now
+and get in the habit of using it any time you would use `x = x` in an
+attribute set if you want to fit in with the Nix cool kids.
 
-### Bringing it all together
+### Bringing it all together for our `let in`
 
-Ok, so that was a lot! Let's bring it all together.
+Ok, so that was a lot! Let's bring it all together. We're still just looking
+at the `let in` block.
 
 ```nix
-
+# The following should be familiar to you now
+outputs = { nixpkgs, home-manager, ... }:
+  let
+    lib = nixpkgs.lib;
+    system = "x86_64-linux";
+    pkgs = import nixpkgs { inherit system; };
+  in {
+    # ...
+  }
 ```
+
+The following should make sense:
+
+- The `outputs` field is a Nix function that takes an attribute set
+  - The attribute set consists of `nixpkgs` and `home-manager`, our `inputs`
+  - The `...` means there may be other things given to us that we don't care about
+- `let` allows us to declare intermediate values to use in the following expression
+- We declare `lib` as the `nixpkgs` standard library, located in `nixpkgs.lib`
+- Our system type is `x86_64-linux`
+- We declare `pkgs` as a value that contains all the packages for an `x86_64-linux` system
+- We can use any of `lib`, `system`, and `pkgs` in the expression following `in`
+
+If any of the above did not make sense, you may want to reread the section
+or ask questions in an issue so it can be clarified.
