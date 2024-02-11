@@ -147,7 +147,7 @@ syntax looks like:
 let a = 2; in a + 2
 ```
 
-You can create multiple variables in the `let`:
+You can create multiple variables in the `let`, and use whitespace:
 
 ```nix
 # Evaluates to the number 6
@@ -157,17 +157,18 @@ let
 in a * b
 ```
 
-You can even use those variables in the same `let`:
+You can even re-use those variables in the same `let`:
 
 ```nix
-# Evaluates to the number 6
+# Evaluates to the number 7
 let
   a = 2;
-  b = a + 2;
-in b + 2
+  b = a + 1;
+in a + b + 2
 ```
 
-Remember that functions are expressions too:
+Remember that functions are expressions too, which is one way we can define
+and use functions for ourselves:
 
 ```nix
 # Evaluates to the number 8
