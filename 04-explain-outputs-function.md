@@ -1,6 +1,6 @@
 # 04 - Explanation: Flake.nix output function syntax
 
-[<- 03 - Explanation: Basic Nix syntax and flake.nix inputs](./03-explain-inputs.md) | [04 - Explanation: Flake.nix output function body ->](./05-explain-outputs-body.md)
+[<- 03 - Explanation: Basic Nix syntax and flake.nix inputs](./03-explain-inputs.md) | [05 - Explanation: Flake.nix output function body ->](./05-explain-outputs-body.md)
 
 In the last section we covered some basic Nix syntax, the `description` field,
 and the `inputs` field.
