@@ -51,6 +51,6 @@ make so much more sense and you can explore all you want!
 If you see code, don't copy/paste it. Type it yourself. _Neuroscience_. You'll
 learn it a lot quicker that way.
 
-## Begin here
+### Let's go!
 
 Ok, ready? **[Let's go! (01-install.md)](01-install.md)**.
