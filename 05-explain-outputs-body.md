@@ -51,11 +51,11 @@ Got it? Great. Now let's look at our outputs function again, but let's remove
 all the extra noise to focus on what it's actually constructing.
 
 ```nix
-  # Vastly simplified
-  outputs = { nixpkgs, home-manager, ... }:
-    {
-      homeConfigurations = "<something>";
-    };
+# Vastly simplified
+outputs = { nixpkgs, home-manager, ... }:
+  {
+    homeConfigurations = "<something>";
+  };
 ```
 
 So what does this say? It says that the `outputs` field of the attribute set
