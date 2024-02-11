@@ -1,6 +1,6 @@
 # 04 - Explanation: Flake.nix output function syntax
 
-[<- Explanation: Basic Nix syntax and flake.nix inputs](./03-explain-inputs.md)
+[<- 03 - Explanation: Basic Nix syntax and flake.nix inputs](./03-explain-inputs.md) | [04 - Explanation: Flake.nix output function body ->](./05-explain-outputs-body.md)
 
 In the last section we covered some basic Nix syntax, the `description` field,
 and the `inputs` field.
@@ -15,7 +15,7 @@ Again, you should now understand:
 
 Now let's tackle the scarier `outputs` field. We'll need to learn some more
 Nix syntax, so we'll jump back and forth between new syntax and how it applies
-to the `outputs` field.  We'll leave the inner `homeConfigurations` field for
+to the `outputs` field. We'll leave the inner `homeConfigurations` field for
 the next section, and only focus on the outer bits because there's a lot
 happening in just these few lines.
 

@@ -1,7 +1,7 @@
 # Simple start with Nix Home Manager with Flakes
 
 **Do not click around. Read this guide in order. Do all the steps. You'll thank
-me later.  See bottom of this readme for the starting link.**
+me later. See bottom of this readme for the starting link.**
 
 Want to control your entire Linux user space in a declarative, highly
 configurable, highly reproducible manner that you can take with you from machine
