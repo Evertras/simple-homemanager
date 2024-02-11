@@ -10,7 +10,27 @@ In the last section we took our first look at the `outputs` field in
 - What `inherit` means
 
 In this section we'll finally wrap up our explanation of our initial
-`flake.nix`.
+`flake.nix` by looking at what the `outputs` function actually does.
+
+For reference, here's the whole thing.
+
+```nix
+outputs = { nixpkgs, home-manager, ... }:
+  let
+    lib = nixpkgs.lib;
+    system = "x86_64-linux";
+    pkgs = import nixpkgs { inherit system; };
+  in {
+
+    homeConfigurations = {
+      myprofile = {
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ ./home.nix ];
+        }
+    };
+  };
+```
 
 ## What should `outputs` produce?
 
