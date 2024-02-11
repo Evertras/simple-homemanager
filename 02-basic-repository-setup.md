@@ -210,6 +210,12 @@ just add the name with some whitespace. Like so:
 You can also remove packages. Try removing `hello` from `home.nix` and notice
 that you can no longer run `hello` from your shell after applying.
 
+This is actually one of the more powerful things about using home-manager.
+Unlike doing a `apt install cowsay` and having that thing on your system
+forever, you have an explicit list of exactly what you want and only what you
+want. It avoids the slow accumulation of cruft that happens with most package
+managers, which is great!
+
 You also just learned about Nix lists! Nix lists are just space-separated
 items. Any amount of whitespace is fine. They don't like commas.
 
