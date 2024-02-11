@@ -74,8 +74,7 @@ You will see these absolutely everywhere. They are the bread and butter of Nix.
 ### Top level fields in a flake
 
 There are a few top level fields of a flake that we need to worry about. They
-are specifically `description`, `inputs`, and `outputs`. There's technically
-also `nixConfig`, but don't worry about that.
+are specifically `description`, `inputs`, and `outputs`.
 
 `description` is a string that describes the flake. Optional.
 
