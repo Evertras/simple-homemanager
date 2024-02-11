@@ -290,13 +290,14 @@ in
 
 So in our example, `inherit system` is just saying `system = system;`. It's
 a commonly used shortcut in Nix, and you'll see it a lot. Why bother? It gets
-more useful when you have multiple fields to inherit, like so:
+more useful when you have multiple fields to inherit because you can just keep
+listing things on the same `inherit`, like this:
 
 ```nix
 let
   someReallyImportantNumber = 3;
   anotherReallyImportantNumber = 4;
-  # The following declarations are exactly the same
+  # The following declarations are exactly the same (a == b)
   a = { inherit someReallyImportantNumber anotherReallyImportantNumber; };
   b = { someReallyImportantNumber = someReallyImportantNumber; anotherReallyImportantNumber = anotherReallyImportantNumber; };
 in
