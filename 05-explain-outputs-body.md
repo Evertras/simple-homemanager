@@ -66,8 +66,8 @@ a definition that home-manager can use. This is done by defining the
 How do you know it's `homeConfigurations`? You copy/paste it from somewhere
 else. The [official docs](https://nix-community.github.io/home-manager/index.xhtml#sec-flakes-standalone)
 say to run `home-manager init` which will get you there eventually, but honestly
-it's a bit frustrating that this isn't easily laid out somewhere. Again,
-welcome to Nix!
+it's a bit frustrating that this isn't easily laid out somewhere as of the time
+of this writing (early 2024). Again, welcome to Nix!
 
 Anyway, that aside, you have a source to copy/paste from now. And now you should
 understand the following:
