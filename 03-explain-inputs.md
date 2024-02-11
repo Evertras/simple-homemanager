@@ -64,7 +64,7 @@ In this case, we're defining a [_Nix attribute set_](https://nixos.org/manual/ni
 A Nix attribute set is basically a dictionary object, like a JSON blob. It
 contains some number of fields, which hold some number of expression values.
 
-An attribute set is defined by curly brackets. The fields can be any
+An attribute set is defined by curly brackets. The field names can be any
 alphanumeric value and may include dashes, undescores, or apostrophes. They
 often hold attribute sets of their own, nesting deeply for specific
 configurations.
