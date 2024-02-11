@@ -1,6 +1,6 @@
-# 03 - Checkpoint Part 1: The flake.nix file
+# 03 - Explanation: Basic Nix syntax and flake.nix inputs
 
-[<- 02 - Basic Repository Setup](./02-basic-repository-setup.md) | [04 - Checkpoint Part 2: The flake.nix file ->](./04-checkpoint-part-2.md)
+[<- 02 - Basic Repository Setup](./02-basic-repository-setup.md) | [04 - Explanation: The flake.nix outputs ->](./04-explain-outputs.md)
 
 As a reward for sticking with me and getting your first home manager flake set
 up, let's actually go back and explain everything now! It's important to have
@@ -55,8 +55,8 @@ Yes, the curly brackets. We're starting there.
 }
 ```
 
-In Nix, every `*.nix` file is a single _Nix expression_. In this case, we're
-defining a [_Nix attribute set_](https://nixos.org/manual/nix/stable/language/values.html#attribute-set).
+In Nix, every `*.nix` file is a single [_Nix expression_](https://nixos.org/manual/nix/stable/language/).
+In this case, we're defining a [_Nix attribute set_](https://nixos.org/manual/nix/stable/language/values.html#attribute-set).
 A Nix attribute set is basically a dictionary object, like a JSON blob. It
 contains some number of fields, which hold some number of expression values.
 
@@ -64,13 +64,15 @@ An attribute set is defined by curly brackets. The fields can be any
 alphanumeric value and may include dashes and undescores. They often hold
 attribute sets of their own, nesting deeply for specific configurations.
 
+You will see these absolutely everywhere. They are the bread and butter of Nix.
+
 ### Top level fields in a flake
 
 There are a few top level fields of a flake that we need to worry about. They
 are specifically `description`, `inputs`, and `outputs`. There's technically
 also `nixConfig`, but don't worry about that.
 
-`description` is a string that describes the flake. Technically optional.
+`description` is a string that describes the flake. Optional.
 
 `inputs` is a set of inputs that the flake uses. A flake only ever sees what's
 in `inputs` and what's been explicitly added in the local git repository.
@@ -187,8 +189,10 @@ which contains over 80,000 packages. It's so special it gets its own import
 without needing any github information. The `23.11` part is a git tag. You can
 [see it here](https://github.com/NixOS/nixpkgs/releases/tag/23.11) if you're
 curious. There's nothing special about it otherwise, it's just a tag to freeze
-all the packages at a specific version. You can use other tags, or even go
-`unstable` if you want to get the latest.
+all the packages at a specific version. You can use other tags, provide a
+specific git commit SHA, or even go `unstable` if you want to get the latest
+(remember it will still be locked to whatever the 'latest' was at the time of
+the first apply!)
 
 It's not just packages, though! It contains an [extensive standard library](https://nixos.org/manual/nixpkgs/stable/#sec-functions-library)
 of sorts for Nix, located in `nixpkgs/lib`.

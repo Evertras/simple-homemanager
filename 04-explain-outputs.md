@@ -1,6 +1,6 @@
-# 04 - Checkpoint Part 2: The flake.nix file outputs
+# 04 - Explanation: Flake.nix outputs
 
-[<- Checkpoint part 1](./03-checkpoint-explanation.md)
+[<- Explanation: Basic Nix syntax and flake.nix inputs](./03-explain-inputs.md)
 
 In the last section we covered some basic Nix syntax, the `description` field,
 and the `inputs` field.

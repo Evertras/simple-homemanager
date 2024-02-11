@@ -1,6 +1,6 @@
 # 02 - Make a basic repository with a simple flake
 
-[<- 01-install](./01-install.md) | [03 - Checkpoint Explanation ->](./03-checkpoint-explanation.md)
+[<- 01-install](./01-install.md) | [03 - Explanation: Basic Nix syntax and flake.nix inputs ->](./03-explain-inputs.md)
 
 ## What's a fla-
 
@@ -173,7 +173,8 @@ git commit -m "Add flake.lock"
 ```
 
 If `hello` isn't found, make sure you followed the install steps correctly. In
-particular, make sure you're sourcing the file they told you to source!
+particular, make sure you're sourcing the file they told you to source in your
+.bashrc or equivalent!
 
 If `hello` is found and you see output, congratulations! You have Home Manager
 with flakes, and you hopefully did it a lot faster than I did.
@@ -232,17 +233,18 @@ clean:
 Nix will only clean up after itself when told to, because it purposefully keeps
 older generations for rollbacks. Don't worry about that for now, just know that
 you need to run `make clean` from time to time. This particular command will
-remove older generations, for the record.
+remove older generations, for the record. You can run it whenever you feel
+like it, but it will make your next run download some dependencies again.
 
 ## Troubleshooting
 
-If anything is still broken, compare your files with
+If anything is still broken, compare your files with what's in
 [./02-basic/](./02-basic/) and make sure you didn't miss anything.
 
 ## Summary
 
 We added a flake.nix file to define a user profile, a home.nix file that defines
-the configuration of the user profile, and a Makefile to make it easy to switch.
+the configuration of the user profile, and a Makefile to make it easy to apply.
 
 You can now add packages to your user profile, and remove them.
 
@@ -259,4 +261,4 @@ options to do things like
 how to organize your `home.nix` into separate module files with your own
 configuration options, and more.
 
-But for now, [I owe you some explanations in the next section.](./03-checkpoint-explanation.md)
+But for now, [I owe you some explanations in the next section.](./03-explain-inputs.md)
