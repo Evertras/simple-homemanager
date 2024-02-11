@@ -312,7 +312,7 @@ attribute set if you want to fit in with the Nix cool kids.
 ## Summary so far
 
 Ok, so that was a lot! Let's bring it all together. We're still just looking
-at the `let in` block.
+at the outer syntax of the function here, not the inner definition.
 
 ```nix
 # The following should be familiar to you now
