@@ -26,8 +26,8 @@ meaning than that. I wondered about that for a while until someone told me.
 
 Basically, a ["flake"](https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-flake.html)
 is a way to define something in Nix that is completely self-contained. All the
-inputs are defined explicitly in the `inputs` field, and these are locked to a
-specific git commit or hash of some sort. In regular Nix, you have to declare
+inputs are defined explicitly in the `inputs` attribute, and these are locked to
+a specific git commit or hash of some sort. In regular Nix, you have to declare
 all these hashes yourself, which is painful. Flakes are marked as "experimental"
 still, but really are quite widespread and generally accepted as "the way" now.
 
@@ -36,7 +36,7 @@ defining an output that's being used by `home-manager` to define our user space
 environment. In other cases we can define things like packages, entire system
 configurations of NixOS, or even just a single function or library of functions.
 For now, we just care that we're creating a home-manager configuration. In the
-future, specific commands may look for different output fields.
+future, specific commands may look for different output attributes.
 
 When you build or use a flake, it will try and reference the `flake.lock` file.
 If it doesn't exist, it will generate the lock file by getting the latest
@@ -62,19 +62,19 @@ Yes, the curly brackets. We're starting there.
 In Nix, every `*.nix` file is a single [_Nix expression_](https://nixos.org/manual/nix/stable/language/).
 In this case, we're defining a [_Nix attribute set_](https://nixos.org/manual/nix/stable/language/values.html#attribute-set).
 A Nix attribute set is basically a dictionary object, like a JSON blob. It
-contains some number of fields, which hold some number of expression values.
+contains some number of attributes, which hold some number of expression values.
 
-An attribute set is defined by curly brackets. The field names can be any
+An attribute set is defined by curly brackets. The attribute names can be any
 alphanumeric value and may include dashes, undescores, or apostrophes. They
 often hold attribute sets of their own, nesting deeply for specific
 configurations.
 
 You will see these absolutely everywhere. They are the bread and butter of Nix.
 
-### Top level fields in a flake
+### Top level attributes in a flake
 
-There are a few top level fields of a flake that we need to worry about. They
-are specifically `description`, `inputs`, and `outputs`.
+There are a few top level attributes of a flake that we need to worry about.
+They are specifically `description`, `inputs`, and `outputs`.
 
 `description` is a string that describes the flake. Optional.
 
@@ -92,8 +92,8 @@ some configuration we're interested in.
 }
 ```
 
-Here's a field called `description` that holds a string literal. As simple as
-it gets. Notice that it must end in a semicolon. All assignments in an
+Here's an attribute called `description` that holds a string literal. As simple
+as it gets. Notice that it must end in a semicolon. All assignments in an
 attribute set in Nix must end in a semicolon. This means that whitespace doesn't
 really matter.
 
@@ -108,7 +108,7 @@ really matter.
 Where is this used? You can run `nix flake info` to see it, but honestly
 it's optional. I'm just including it here because it's a convenient way to
 show a simple string value assignment! In fact, if you look at the root
-[flake.nix](./flake.nix) file, you'll see that there's no description field
+[flake.nix](./flake.nix) file, you'll see that there's no description attribute
 defined at all. It's more useful in a shareable package, so for your home
 manager setup you can omit it if you want.
 
@@ -130,7 +130,7 @@ Now we get to something a little more interesting.
 ```
 
 You should recognize by now that `inputs` is being set to a Nix attribute set.
-Inside `inputs` we have two fields: `nixpkgs` and `home-manager`.
+Inside `inputs` we have two attributes: `nixpkgs` and `home-manager`.
 
 But hold on, what's this `nixpkgs.url` thing?
 
@@ -146,10 +146,10 @@ But hold on, what's this `nixpkgs.url` thing?
 }
 ```
 
-Using the `.` is just a shortcut for a nested field in a deeper attribute set.
-So you can recognize now that each value in `inputs` is itself a new attribute
-set that usually contains a `url` at minimum. This `url` field is often a
-github link, but it can be set to other things as well.
+Using the `.` is just a shortcut for a nested attribute in a deeper attribute
+set. So you can recognize now that each value in `inputs` is itself a new
+attribute set that usually contains a `url` at minimum. This `url` attribute is
+often a github link, but it can be set to other things as well.
 
 Note that if you use this `.` shortcut, you can use it multiple times or at any
 point in the nesting. It will all combine as you'd expect:
@@ -176,11 +176,11 @@ The actual names of `nixpkgs` and `home-manager` are arbitrary. They could be
 whatever you want them to be, but it's common to use these names so best to
 stick with tradition.
 
-Looking at the `home-manager` input, you can see that it has a field called
+Looking at the `home-manager` input, you can see that it has an attribute called
 `inputs.nixpkgs.follows`. This is a way to say that the `home-manager` input
 depends on the `nixpkgs` input.
 
-For a reference on what other things can be in the `inputs` field, see the
+For a reference on what other things can be in the `inputs` attribute, see the
 [official docs](https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-flake.html#flake-inputs).
 However, you'll generally not want to mess with this too much early on, so as
 long as you're comfortable understanding that the two inputs we have here are
