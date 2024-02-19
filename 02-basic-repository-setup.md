@@ -107,6 +107,7 @@ to `homeDirectory`.
 Try this before we move on.
 
 ```bash
+# Try to run this in your shell
 hello
 ```
 
