@@ -121,6 +121,7 @@ Makefile do all that work for us before we even try running it.
 
 ```make
 # Careful about copy/pasting, Makefiles want tabs!
+# But you're not copy/pasting, are you?
 .PHONY: update
 update:
     home-manager switch --flake .#myprofile
@@ -128,6 +129,9 @@ update:
 
 Change `myprofile` to whatever you changed it to in `flake.nix`. This is how
 we can target different profiles in the future.
+
+If you want to skip the Makefile and type out the command each time, or use
+some other method of running the command, that's fine. I just like Makefiles.
 
 ## Activate home-manager
 
