@@ -134,7 +134,7 @@ we can target different profiles in the future.
 ### Trip on a rake first
 
 ```bash
-# THIS WILL ERROR.  IT WILL MAKE NO SENSE.  Read below.
+# THIS WILL ERROR. IT WILL MAKE NO SENSE. Read below.
 make
 ```
 
