@@ -126,8 +126,16 @@ way.
 
 ### The value of `myprofile`
 
-The value of `myprofile` is another attribute set. Surprise! It's always
-another attribute set.
+The value of `myprofile` is set to the result of a function call.  You should
+be able to recognize this by now:
+
+```nix
+#                   function
+#           vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+myprofile = home-manager.lib.homeManagerConfiguration { ... }
+#                                                     ^^^^^^^
+#                            single attribute set as argument
+```
 
 Just like `nixpkgs`, `home-manager` comes with its own `lib` which is (say it
 with me) another attribute set. One of the values, `homeManagerConfiguration`,
