@@ -344,3 +344,6 @@ The following should make sense:
 
 If any of the above did not make sense, you may want to reread the section
 or ask questions in an issue so it can be clarified.
+
+[Next](./05-explain-outputs-body.md) we'll finally get to the actual
+`homeConfigurations` field and the inner `home-manager` function.
