@@ -2,21 +2,21 @@
 
 [<- 03 - Explanation: Basic Nix syntax and flake.nix inputs](./03-explain-inputs.md) | [05 - Explanation: Flake.nix output function body ->](./05-explain-outputs-body.md)
 
-In the last section we covered some basic Nix syntax, the `description` field,
-and the `inputs` field.
+In the last section we covered some basic Nix syntax, the `description`
+attribute, and the `inputs` attribute.
 
 Again, you should now understand:
 
 - What a Nix attribute set is
 - How the `.` notation works
-- That the `inputs` field is a Nix attribute set with arbitrary fields
+- That the `inputs` attribute is a Nix attribute set with arbitrary attributes
 
 [Go back if you don't.](./03-checkpoint-explanation.md)
 
-Now let's tackle the scarier `outputs` field. We'll need to learn some more
+Now let's tackle the scarier `outputs` attribute. We'll need to learn some more
 Nix syntax, so we'll jump back and forth between new syntax and how it applies
-to the `outputs` field. We'll leave the inner `homeConfigurations` field for
-the next section, and only focus on the outer bits because there's a lot
+to the `outputs` attribute. We'll leave the inner `homeConfigurations` attribute
+for the next section, and only focus on the outer bits because there's a lot
 happening in just these few lines.
 
 This is going to be long. If this doesn't convince you that you were right
@@ -73,11 +73,12 @@ just know that a function always has exactly one argument.
 
 Functions can (and often do) take an attribute set as an argument. The Nix
 syntax allows us to _deconstruct_ the incoming attribute set into specific
-fields that we expect. When we do this, the input fields _must_ be provided
-(unless we do some other fancy default syntax, which is for another day).
+attributes that we expect. When we do this, the input attributes _must_ be
+provided (unless we do some other fancy default syntax, which is for another
+day).
 
 ```nix
-# A function that takes an attribute set with fields `a` and `b` and returns
+# A function that takes an attribute set with attributes `a` and `b` and returns
 # `a + b`.
 
 # argument (still single!)
@@ -105,7 +106,7 @@ The important things to know right now:
 
 ## The `outputs` function
 
-Ok, let's finally get back to our `outputs` field. Specifically, the first
+Ok, let's finally get back to our `outputs` attribute. Specifically, the first
 line.
 
 ```nix
@@ -115,14 +116,14 @@ line.
 outputs = { nixpkgs, home-manager, ... }:
 ```
 
-We are assigning the field `outputs` to a function! You can tell by the `:` at
-the end. This function takes a single argument, which is an attribute set,
+We are assigning the attribute `outputs` to a function! You can tell by the `:`
+at the end. This function takes a single argument, which is an attribute set,
 similar to our `{ a, b }: a + b` example. The attribute set must have the
-fields `nixpkgs` and `home-manager` at a minimum, and the `...` is a special
+attributes `nixpkgs` and `home-manager` at a minimum, and the `...` is a special
 Nix way of saying "and anything else is fine too but I'll ignore it".
 
 Where did `nixpkgs` and `home-manager` come from? `inputs` of course! The
-field names are arbitrary in `inputs`, and they will be passed verbatim to the
+attribute names are arbitrary in `inputs`, and they will be passed verbatim to the
 arguments of the `outputs` function. You can try renaming `nixpkgs` to `idk`
 and try to rebuild it, but it won't work until you also rename the argument in
 the `outputs` function to `idk` as well.
@@ -163,6 +164,20 @@ let
   a = 2;
   b = a + 1;
 in a + b + 2
+```
+
+But you can't use anything declared here outside that expression:
+
+```nix
+{
+  # Evaluates to 5
+  first = let
+    a = 2;
+    b = a + 3;
+  in a+b;
+
+  second = a+3; # This will fail
+}
 ```
 
 Remember that functions are expressions too, which is one way we can define
@@ -256,7 +271,7 @@ in #...
 
 #### Using `import` vs `legacyPackages`
 
-As an aside, you may see some examples out there with some field of
+As an aside, you may see some examples out there with some attribute of
 `legacyPackages` instead of `import`. Both are the same, but `legacyPackages`
 may actually be faster in more complicated setups that would `import` multiple
 times. If you want to geek out, [check this thread](https://discourse.nixos.org/t/using-nixpkgs-legacypackages-system-vs-import/17462/7).
@@ -274,24 +289,25 @@ How are you supposed to know this? You read it somewhere and copy/paste like
 the rest of us. _Welcome to Nix!_ I actually still can't find that info in
 the official docs. If you know where it is, open an issue here.
 
-Ok, so we want to give it an attribute set, and we want to give it the field
+Ok, so we want to give it an attribute set, and we want to give it the attribute
 `system`. So what's this `inherit system` about? Basically, `inherit a;` is
 exactly the same as `a = a;`.
 
 ```nix
+# This whole expression evaluates to `true`
 let
   a = 3;
   # The following declarations are exactly the same (b == c)
   b = { inherit a; };
   c = { a = a };
 in
-  # ...
+  b.a == c.a
 ```
 
 So in our example, `inherit system` is just saying `system = system;`. It's
 a commonly used shortcut in Nix, and you'll see it a lot. Why bother? It gets
-more useful when you have multiple fields to inherit because you can just keep
-listing things on the same `inherit`, like this:
+more useful when you have multiple attributes to inherit because you can just
+keep listing things on the same `inherit`, like this:
 
 ```nix
 let
@@ -299,12 +315,15 @@ let
   anotherReallyImportantNumber = 4;
   # The following declarations are exactly the same (a == b)
   a = { inherit someReallyImportantNumber anotherReallyImportantNumber; };
-  b = { someReallyImportantNumber = someReallyImportantNumber; anotherReallyImportantNumber = anotherReallyImportantNumber; };
+  b = {
+    someReallyImportantNumber = someReallyImportantNumber;
+    anotherReallyImportantNumber = anotherReallyImportantNumber;
+  };
 in
   # ...
 ```
 
-You can also do some neat tricks with `inherit` to grab nested fields, but
+You can also do some neat tricks with `inherit` to grab nested attributes, but
 that's for another day. Just get used to the basics of `inherit` for now
 and get in the habit of using it any time you would use `x = x` in an
 attribute set if you want to fit in with the Nix cool kids.
@@ -327,23 +346,23 @@ outputs = { nixpkgs, home-manager, ... }:
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; };
   in {
-    # ...
+    # Stuff
   }
 ```
 
 The following should make sense:
 
-- The `outputs` field is a Nix function that takes an attribute set
+- The `outputs` attribute is a Nix function that takes an attribute set
   - The attribute set consists of `nixpkgs` and `home-manager`, our `inputs`
   - The `...` means there may be other things given to us that we don't care about
 - `let` allows us to declare intermediate values to use in the following expression
 - We declare `lib` as the `nixpkgs` standard library, located in `nixpkgs.lib`
 - Our system type is `x86_64-linux`
 - We declare `pkgs` as a value that contains all the packages for an `x86_64-linux` system
-- We can use any of `lib`, `system`, and `pkgs` in the expression following `in`
+- We can use any of `lib`, `system`, and `pkgs` in the expression following `in` (whatever's in `# Stuff`)
 
 If any of the above did not make sense, you may want to reread the section
 or ask questions in an issue so it can be clarified.
 
 [Next](./05-explain-outputs-body.md) we'll finally get to the actual
-`homeConfigurations` field and the inner `home-manager` function.
+`homeConfigurations` attribute and the inner `home-manager` function.
