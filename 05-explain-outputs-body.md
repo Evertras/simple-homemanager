@@ -141,6 +141,16 @@ Just like `nixpkgs`, `home-manager` comes with its own `lib` which is (say it
 with me) another attribute set. One of the values, `homeManagerConfiguration`,
 is a function which generates the actual output that `home-manager` uses.
 
+Now let's look at the input to this function.
+
+```nix
+# Arguments passed to home-manager.lib.homeManagerConfiguration
+{
+  inherit pkgs;
+  modules = [ ./home.nix ];
+}
+```
+
 As input to this `homeManagerConfiguration` function, we need to provide it with
 the definition of all potential packages for us to install as well as the actual
 configuration we defined for ourselves. Generally this will be the `pkgs` we
@@ -151,7 +161,20 @@ to stick with Nix conventions.
 
 We also need to provide it with a list of 'modules'. Here we give it our
 `home.nix` file. We'll talk about what a 'module' is later, for now just know
-that our `home.nix` is in fact a 'module'.
+that our `home.nix` is in fact a 'module' and that these 'modules' supply the
+configuration such as packages to install, files to manage, etc.
+
+You should recognize the list syntax from when you tried modifying `home.nix`
+to include a few extra packages. As a quick refresher of syntax:
+
+```nix
+{
+  # A nix list of strings
+  mylist = [ "a" "b" "c" ];
+}
+```
+
+In this case, there's only one module being passed in.
 
 ### Paths
 
