@@ -65,7 +65,7 @@ A Nix attribute set is basically a dictionary object, like a JSON blob. It
 contains some number of attributes, which hold some number of expression values.
 
 An attribute set is defined by curly brackets. The attribute names can be any
-alphanumeric value and may include dashes, undescores, or apostrophes. They
+alphanumeric value and may include dashes, underscores, or apostrophes. They
 often hold attribute sets of their own, nesting deeply for specific
 configurations.
 
