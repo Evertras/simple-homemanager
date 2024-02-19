@@ -126,7 +126,7 @@ way.
 
 ### The value of `myprofile`
 
-The value of `myprofile` is set to the result of a function call.  You should
+The value of `myprofile` is set to the result of a function call. You should
 be able to recognize this by now:
 
 ```nix
