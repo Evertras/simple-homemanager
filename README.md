@@ -41,9 +41,9 @@ I assume you have some minimal programming knowledge. If you know what a
 
 ### Please read this bit
 
-This is not intended to replace the [official documentation of Nix](https://nix.dev/),
+This is not intended to replace the [official documentation of Nix itself](https://nix.dev/),
 [Home Manager](https://nix-community.github.io/home-manager/),
-[nixpkgs](https://nixos.org/manual/nixpkgs/stable/), etc.  This is meant to be
+[nixpkgs](https://nixos.org/manual/nixpkgs/stable/), etc. This is meant to be
 an entry point to get a foundation, so that you can understand what you're
 looking at in the future.
 
