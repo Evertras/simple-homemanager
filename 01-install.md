@@ -23,8 +23,9 @@ For now just put this in `~/.config/nix/nix.conf` or
 experimental-features = nix-command flakes
 ```
 
-It's "experimental" but it's been in use for years and everyone uses them.
-Just do it.
+It's "experimental" but it's been in use for years and everyone uses them. You
+should at least be aware that they are NOT guaranteed to be stable. When you're
+ready to dig into that more, [check out the official page here](https://nix.dev/concepts/flakes).
 
 ### Make sure it works
 
