@@ -36,10 +36,16 @@ install. After Home Manager is installed, it should all be the same anyway.
 
 I do not assume you have any experience with Nix.
 
-I assume you have minimal programming knowledge. If you know what a "string"
-and an "array" are, you're probably fine.
+I assume you have some minimal programming knowledge. If you know what a
+"string" and a "function" are, you're probably fine.
 
 ### Please read this bit
+
+This is not intended to replace the [official documentation of Nix](https://nix.dev/),
+[Home Manager](https://nix-community.github.io/home-manager/),
+[nixpkgs](https://nixos.org/manual/nixpkgs/stable/), etc.  This is meant to be
+an entry point to get a foundation, so that you can understand what you're
+looking at in the future.
 
 I am not going to give you deep explanations of why certain things are the way
 they are. I am not going to give you fifty different ways to do something. The
