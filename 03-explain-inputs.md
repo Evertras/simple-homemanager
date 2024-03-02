@@ -28,15 +28,16 @@ Basically, a ["flake"](https://nixos.org/manual/nix/stable/command-ref/new-cli/n
 is a way to define something in Nix that is completely self-contained. All the
 inputs are defined explicitly in the `inputs` attribute, and these are locked to
 a specific git commit or hash of some sort. In regular Nix, you have to declare
-all these hashes yourself, which is painful. Flakes are marked as "experimental"
-still, but really are quite widespread and generally accepted as "the way" now.
+all these hashes yourself, which is painful. This is one reason flakes are
+popular despite being marked as "experimental".
 
-The output of a flake can be a number of things. In our particular case, we're
-defining an output that's being used by `home-manager` to define our user space
-environment. In other cases we can define things like packages, entire system
-configurations of NixOS, or even just a single function or library of functions.
-For now, we just care that we're creating a home-manager configuration. In the
-future, specific commands may look for different output attributes.
+The output of a flake can include a number of things. In our particular case,
+we're defining an output that's being used by `home-manager` to define our user
+space environment. In other cases we can define things like packages, entire
+system configurations of NixOS, or even just a single function or library of
+functions. For now, we just care that we're creating a home-manager
+configuration. In the future, specific commands may look for different output
+attributes.
 
 When you build or use a flake, it will try and reference the `flake.lock` file.
 If it doesn't exist, it will generate the lock file by getting the latest
