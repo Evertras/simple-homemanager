@@ -15,6 +15,7 @@ machines.
 ```bash
 # Call it whatever you want, I won't judge
 mkdir my-home-manager
+cd my-home-manager
 git init
 ```
 
