@@ -43,7 +43,7 @@ What does this function do? Think about it, then I'll explain.
 
 This function takes a single argument. That argument is an attribute set that
 contains the attributes `a` and `b`. The function returns a new attribute set,
-which then contains a single filed `sum` that is equal to `a + b`.
+which then contains a single attribute `sum` that is equal to `a + b`.
 
 Got it? Great. Now let's look at our outputs function again, but let's remove
 all the extra noise to focus on what it's actually constructing.
