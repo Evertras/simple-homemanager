@@ -1,6 +1,6 @@
 # 05 - Explanation: Flake.nix output function body
 
-[<- Explanation: Flake.nix output function syntax](04-explain-outputs-function.md)
+[<- Explanation: Flake.nix output function syntax](04-explain-outputs-function.md)| [Explanation: Home.nix ->](06-explain-home-nix.md)
 
 In the last section we took our first look at the `outputs` attribute in
 `flake.nix`. You should now understand:
@@ -215,3 +215,10 @@ some familiarity with what it's actually saying. You do not have to be able to
 write this from scratch or be able to give an in-depth explanation of each line.
 As long as you can look at a line and think, "Yeah I see that's `X`" then you're
 good to go, and you can always come back later as you play with things more.
+
+For the most part, you will not edit your flake.nix much. You only really need
+to come back here if you're adding new profiles or adding some inputs in the
+future.
+
+So, [next up](./06-explain-home-nix.md) is explaining `home.nix`, which is where
+we actually define our home configuration and will spend most of our time.
