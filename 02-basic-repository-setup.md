@@ -86,6 +86,7 @@ yet. You're almost there, answers are coming.
 {
   home = {
     packages = with pkgs; [
+      home-manager
       hello
     ];
 
