@@ -189,7 +189,7 @@ You'll start doing this as you get more and more configuration code together.
 
 #### Aside: Magical filenames
 
-There are two mgaical filenames to be aware of. The first is `flake.nix`.
+There are two magical filenames to be aware of. The first is `flake.nix`.
 This is a file used by various flake commands, as you might expect.
 
 The second is `default.nix`. If you ever import a directory, Nix will look for
