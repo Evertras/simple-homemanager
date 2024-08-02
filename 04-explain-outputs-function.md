@@ -170,7 +170,7 @@ But you can't use anything declared here outside that expression:
 
 ```nix
 {
-  # Evaluates to 5
+  # Evaluates to 7
   first = let
     a = 2;
     b = a + 3;
