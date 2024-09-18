@@ -47,7 +47,7 @@ it later.
 [Install Home Manager](https://nix-community.github.io/home-manager/index.xhtml#ch-installation).
 
 If you're here reading this, you want the standalone. If you're on NixOS,
-install it as a [package via NixOS](https://search.nixos.org/packages?channel=23.11&show=home-manager&from=0&size=50&sort=relevance&type=packages&query=home-manager).
+install it as a [package via NixOS](https://search.nixos.org/packages?show=home-manager&query=home-manager).
 
 Make sure you follow step 4:
 
